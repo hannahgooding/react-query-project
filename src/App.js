@@ -1,7 +1,26 @@
 import React from "react";
+import Alive from "./components/Alive";
+import Dead from "./components/Dead";
+import Unknown from "./components/Unknown";
 
 function App() {
-  return <div className="App"></div>;
+  const [page, setPage] = React.useState("Alive");
+
+  return (
+    <div className="App">
+      <h1>Ricky and Morty Characters</h1>
+      <nav>
+        <button onClick={() => setPage("Alive")}>Alive</button>
+        <button onClick={() => setPage("Dead")}>Dead</button>
+        <button onClick={() => setPage("Unknown")}>Unknown</button>
+      </nav>
+      <main>
+        {page === "Alive" && <Alive />}
+        {page === "Dead" && <Dead />}
+        {page === "Unknown" && <Unknown />}
+      </main>
+    </div>
+  );
 }
 
 export default App;

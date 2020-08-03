@@ -11,7 +11,10 @@ const fetchAlive = async () => {
 function Alive() {
   // Making a fetch request using the React Query library hook: useQuery
   // useQuery needs to be called with a unique key and an async function
-  const { data, status } = useQuery("alive", fetchAlive);
+  // it also takes an object as the third argument which has custom config for the fetch request
+  const { data, status } = useQuery("alive", fetchAlive, {
+    onSuccess: () => console.log("data fetched successfully"),
+  });
   // useQuery calls the fetchAlive function and then manages the fetching without having to call the function again later
   // You can destructure the info returned from useQuery e.g. status to conditionally render components based on the query status
 
